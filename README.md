@@ -1,0 +1,1 @@
+# Frontend-Agnostic MCP Server
