@@ -1,0 +1,163 @@
+{
+  "name": "GCP Manager",
+  "description": "MCP server for managing Google Cloud Platform resources",
+  "version": "1.0.0",
+  "tools": [
+    {
+      "name": "list_instances",
+      "description": "List VM instances in a GCP project and zone",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "project": {
+            "type": "string",
+            "description": "GCP project ID"
+          },
+          "zone": {
+            "type": "string",
+            "description": "GCP zone (e.g., 'us-central1-a')"
+          }
+        },
+        "required": ["project", "zone"]
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "instances": {
+            "type": "array",
+            "description": "List of VM instances"
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of instances found"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the operation"
+          }
+        }
+      }
+    },
+    {
+      "name": "start_instance",
+      "description": "Start a VM instance in GCP",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "project": {
+            "type": "string",
+            "description": "GCP project ID"
+          },
+          "zone": {
+            "type": "string",
+            "description": "GCP zone (e.g., 'us-central1-a')"
+          },
+          "instance_name": {
+            "type": "string",
+            "description": "Name of the VM instance to start"
+          }
+        },
+        "required": ["project", "zone", "instance_name"]
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "operation_id": {
+            "type": "string",
+            "description": "ID of the operation"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the operation"
+          },
+          "message": {
+            "type": "string",
+            "description": "Description of the operation"
+          }
+        }
+      }
+    },
+    {
+      "name": "stop_instance",
+      "description": "Stop a VM instance in GCP",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "project": {
+            "type": "string",
+            "description": "GCP project ID"
+          },
+          "zone": {
+            "type": "string",
+            "description": "GCP zone (e.g., 'us-central1-a')"
+          },
+          "instance_name": {
+            "type": "string",
+            "description": "Name of the VM instance to stop"
+          }
+        },
+        "required": ["project", "zone", "instance_name"]
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "operation_id": {
+            "type": "string",
+            "description": "ID of the operation"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the operation"
+          },
+          "message": {
+            "type": "string",
+            "description": "Description of the operation"
+          }
+        }
+      }
+    },
+    {
+      "name": "get_instance",
+      "description": "Get details of a specific VM instance",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "project": {
+            "type": "string",
+            "description": "GCP project ID"
+          },
+          "zone": {
+            "type": "string",
+            "description": "GCP zone (e.g., 'us-central1-a')"
+          },
+          "instance_name": {
+            "type": "string",
+            "description": "Name of the VM instance to get details for"
+          }
+        },
+        "required": ["project", "zone", "instance_name"]
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "instance": {
+            "type": "object",
+            "description": "Detailed information about the VM instance"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the operation"
+          }
+        }
+      }
+    }
+  ],
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "path": "./gcp_mcp_server.py"
+  },
+  "authentication": {
+    "required": false
+  }
+}
