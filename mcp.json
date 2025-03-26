@@ -1,0 +1,58 @@
+{
+  "name": "Demo",
+  "description": "Frontend-agnostic MCP server for Boomi integration",
+  "version": "1.0.0",
+  "tools": [
+    {
+      "name": "add",
+      "description": "Add two numbers using Boomi integration",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "integer",
+            "description": "First number to add"
+          },
+          "b": {
+            "type": "integer",
+            "description": "Second number to add"
+          }
+        },
+        "required": ["a", "b"]
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "sum": {
+            "type": "integer",
+            "description": "The sum of a and b"
+          },
+          "runtime_name": {
+            "type": "string",
+            "description": "Name of the runtime that performed the calculation"
+          },
+          "execution_id": {
+            "type": "string",
+            "description": "Unique ID for this execution"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the operation"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error message if any"
+          }
+        }
+      }
+    }
+  ],
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "path": "./mcp_server.py"
+  },
+  "authentication": {
+    "required": false
+  }
+}
