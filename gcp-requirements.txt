@@ -1,0 +1,5 @@
+mcp-server
+google-auth
+google-cloud-compute
+python-dotenv
+argparse
